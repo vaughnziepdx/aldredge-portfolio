@@ -91,8 +91,8 @@
   --color-alert-40: #B86E00;
 
   /* Per-project card backgrounds */
-  --color-project-plunk-trust:      #E6FAFF;
-  --color-project-plunk-onboarding: #C0F4E3;
+  --color-project-plunk-trust:      #99E9FD;
+  --color-project-plunk-onboarding: #B8ECA0;
   --color-project-here:             #F6CAE3;
   --color-project-vouched:          #EAF3FF;
 
@@ -187,7 +187,7 @@ body {
 .content-column { max-width: var(--width-content); }
 .wide-column    { max-width: var(--width-wide); }
 
-.section    { padding-block: var(--spacing-section); }
+.section    { padding-top: 2.5rem; padding-bottom: 2rem; }
 .section-sm { padding-block: var(--spacing-section-sm); }
 
 .section-divider {
@@ -257,7 +257,11 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+.project-grid > div {
+  display: flex;
+  flex-direction: column;
 }
 .project-grid--single {
   grid-template-columns: 1fr;
@@ -274,6 +278,7 @@ body {
   color: var(--color-ink);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-height: 280px;
+  flex: 1;
   position: relative;
   overflow: hidden;
 }
@@ -307,18 +312,47 @@ body {
 .project-card--here             { background-color: var(--color-project-here); }
 .project-card--vouched          { background-color: var(--color-project-vouched); }
 
+/* ── Card visual ── */
+.card-visual {
+  position: relative;
+  margin-top: auto;
+  width: 100%;
+  height: 118px;
+}
+
+.card-visual__before,
+.card-visual__after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 353px;
+  transition: opacity 0.4s ease;
+}
+
+.card-visual__before { opacity: 1; }
+.card-visual__after  { opacity: 0; }
+
+.project-card:hover .card-visual__before { opacity: 0; }
+.project-card:hover .card-visual__after  { opacity: 1; }
+
 /* ── Tag chip ── */
 .tag-chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.625rem;
-  border-radius: var(--radius-tag);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--color-ink-secondary);
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #E5E4E0;
+  border: none;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #555450;
   white-space: nowrap;
+  gap: 10px;
 }
 
 /* ── Case study: hero ── */
